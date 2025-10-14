@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class player : MonoBehaviour
+public class player : character
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
