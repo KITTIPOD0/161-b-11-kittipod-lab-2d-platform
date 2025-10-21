@@ -9,6 +9,20 @@ public class player : character
         base.Intialize(100);
     }
 
+    public void OnHitWith(Enemy enemy)
+    {
+        TakeDamage(enemy.DamageHit);
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+      Enemy enemy =other.gameObject.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+          OnHitWith(enemy);
+            IsDead();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
