@@ -13,10 +13,26 @@ public class character : MonoBehaviour
     protected Animator anim;
     protected Rigidbody2D rb;
 
+
+    public void Intialize (int startHeath)
+    {
+        Heath = startHeath;
+        Debug.Log($"{this.name} is intialize Heath : {this.Heath}");
+
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+
+    }
+
+
+
+
     public void  TakeDamage(int damage)
     {
         Heath -= damage;
         Debug.Log($"{this.name} took damage {damage}. Current Heath : {Heath}");
+
+        IsDead();
     }
     public bool IsDead()
     {
