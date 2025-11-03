@@ -59,7 +59,7 @@ private void  Update()
             var bullet = Instantiate(Bullet,ShootPoint.position,Quaternion.identity);
             Banana banana = bullet.GetComponent<Banana>();
             if (banana != null)
-                banana.InitWeapon(20, this);
+                banana.InitWeapon(100,this);
             WaitTime = 0.0f;
         }
     }

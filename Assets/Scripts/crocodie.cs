@@ -1,10 +1,15 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class crocodie : Enemy
+public class crocodie : Enemy,Isshoottable
 {
     [SerializeField] private float atkRange;
     public player player;
+
+    [field: SerializeField] public GameObject Bullet { get; set; }
+    [field: SerializeField] public Transform ShootPoint { get; set; }
+    public float ReloadTime { get; set; }
+    public float WaitTime { get; set; }
 
 
 
@@ -20,25 +25,39 @@ public class crocodie : Enemy
     }
     public void Shoot()
     {
-        Debug.Log($"{this.name} shoots rock to the {player.name}!");
+        if(WaitTime>=ReloadTime)
+        {
+            anim.SetTrigger("Shoot");
+            var bullet = Instantiate(Bullet,ShootPoint.position, Quaternion.identity);
+            Rock rock = bullet.GetComponent<Rock>();
+            rock.InitWeapon(30,this);
+            WaitTime = 0;
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
-        base.Intialize(50);
+        base.Intialize(20);
         DamageHit = 30;
         //set atk range and target
         atkRange = 6.0f;
         player = GameObject.FindFirstObjectByType<player>();
 
+
+        WaitTime = 0.0f;
+        ReloadTime = 5.0f;
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-        Behavior();
+        WaitTime += Time.fixedDeltaTime;
 
+    }
+    private void Update()
+    {
+        Behavior();
     }
 }
