@@ -1,8 +1,9 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class crocodie : Enemy
 {
-    [SerializeField] float atkRange;
+    [SerializeField] private float atkRange;
     public player player;
 
 
@@ -14,6 +15,7 @@ public class crocodie : Enemy
         {
             Debug.Log($"{player.name} is in the {this.name}'s atk range!");
             Shoot();
+            
         }
     }
     public void Shoot()
@@ -34,8 +36,9 @@ public class crocodie : Enemy
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         Behavior();
+
     }
 }
