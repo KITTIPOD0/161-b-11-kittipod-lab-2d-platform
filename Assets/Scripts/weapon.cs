@@ -25,12 +25,11 @@ public abstract class weapon : MonoBehaviour
         if (value > 0)
 
             return 1;
-        else
-            return -1;
+        else  return -1;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Character character = other.GetComponent<Character>();
+        character character = other.GetComponent<character>();
         if (character != null)
         {
             OnHitWith(other.GetComponent<character>());
