@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class player : character, Isshoottable
+public class Player : character, Isshoottable
 {
 
     [field: SerializeField] public GameObject Bullet { get; set; }

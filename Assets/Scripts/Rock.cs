@@ -11,7 +11,7 @@ public class Rock : weapon
 
     public override void OnHitWith(character obj)
     {
-        if (obj is player)
+        if (obj is Player)
             obj.TakeDamage(this.damage);
     }
 

@@ -3,40 +3,40 @@ using UnityEngine;
 public class character : MonoBehaviour
 {
 
-    private int heath;
-
-    public int Heath
-    {
-        get { return heath; }
-        set { heath = (value < 0) ? 0 : value; }
-    }
-    protected Animator anim;
-    protected Rigidbody2D rb;
+    public int health;
+    public Rigidbody2D rb;
+    public Animator anim;
+    public HealthBar healthBarPrefab;   // พรีแฟ้บของหลอดเลือด
+    private HealthBar healthBarInstance;
+    [SerializeField] public float maxHealth = 100.0f;
+   
+   
 
 
     public void Intialize (int startHeath)
     {
-        Heath = startHeath;
-        Debug.Log($"{this.name} is intialize Heath : {this.Heath}");
+        health = startHeath;
+        Debug.Log($"{this.name} is intialize Heath : {this.health}");
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
+       
     }
 
-
+    
 
 
     public void  TakeDamage(int damage)
     {
-        Heath -= damage;
-        Debug.Log($"{this.name} took damage {damage}. Current Heath : {Heath}");
-
+        health -= damage;
+        Debug.Log($"{this.name} took damage {damage}. Current Heath : {health}");
+        
         IsDead();
     }
     public bool IsDead()
     {
-        if (heath <= 0)
+        if (health <= 0)
         {
             Destroy(this.gameObject);
             return true;
@@ -53,6 +53,6 @@ public class character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      
     }
 }

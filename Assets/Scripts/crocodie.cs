@@ -4,7 +4,7 @@ using UnityEngine;
 public class crocodie : Enemy,Isshoottable
 {
     [SerializeField] private float atkRange;
-    public player player;
+    public Player player;
 
     [field: SerializeField] public GameObject Bullet { get; set; }
     [field: SerializeField] public Transform ShootPoint { get; set; }
@@ -39,11 +39,11 @@ public class crocodie : Enemy,Isshoottable
     void Start()
     {
         
-        base.Intialize(20);
+        base.Intialize(50);
         DamageHit = 30;
         //set atk range and target
         atkRange = 6.0f;
-        player = GameObject.FindFirstObjectByType<player>();
+        player = GameObject.FindFirstObjectByType<Player>();
 
 
         WaitTime = 0.0f;
