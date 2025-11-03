@@ -5,7 +5,6 @@ public class HealthBar : MonoBehaviour
 {
     public Slider healthBar;
     public character character;
-    float maxHeath = 100.00f;
     
     private void Start()
     {
@@ -14,6 +13,6 @@ public class HealthBar : MonoBehaviour
     private void Update()
     {
         healthBar.value = character.health;
-        healthBar.maxValue = maxHeath;
+        healthBar.maxValue = character.maxHealth;
     }
 }

@@ -15,6 +15,7 @@ public class character : MonoBehaviour
 
     public void Intialize (int startHeath)
     {
+        maxHealth = startHeath;
         health = startHeath;
         Debug.Log($"{this.name} is intialize Heath : {this.health}");
 
